@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAHTANI OUSSAMA</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 🔹 Vidéo en arrière-plan */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* 🔹 Carte de profil */
+    .card {
+      text-align: center;
+      color: white;
+      backdrop-filter: blur(4px);
+      padding: 20px;
+      border-radius: 20px;
+      z-index: 1;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .icons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .icons img {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .icons img:hover {
+      transform: scale(1.15);
+    }
+
+    @media (max-width: 600px) {
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .icons img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🔹 Vidéo en arrière-plan -->
+  <video autoplay muted loop class="bg-video">
+    <source src="vid.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo HTML5.
+  </video>
+
+  <!-- 🔹 Carte de profil -->
+  <div class="card">
+    <img src="oussama.jpg" alt="Photo du client" class="profile-photo">
+
+    <div class="icons">
+      <a href="https://www.tiktok.com/@oussamaaa207" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      </a>
+
+      <a href="https://www.instagram.com/oussama_k_27" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+
+      <a href="https://wa.me/212625454176" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
