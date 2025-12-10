@@ -92,29 +92,31 @@ body {
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbzy_liZgEA1-jDwBlhQSKT33ZtnbsafKEC5j9l4AQf38GenM_cR0onlrVv-RH19iPayBQ/exec?id=OMAR001";
-const idCommercant = "OMAR001"; // identifiant du commerçant
+const scriptURL = "https://script.google.com/macros/s/TON_ID_SCRIPT/exec";
+const idCommercant = "OMAR001";
+
+// Générer un identifiant client basé sur le navigateur
+function generateClientHash() {
+  const raw = navigator.userAgent + navigator.platform + screen.width + screen.height;
+  return btoa(raw).slice(0, 12); // hash simple
+}
+const clientHash = generateClientHash();
 
 let lastBadge = "";
 
 function updateCounter() {
-  fetch(`${scriptURL}?id=${idCommercant}`)
+  fetch(`${scriptURL}?id=${idCommercant}&agent=${clientHash}`)
     .then(res => res.json())
     .then(data => {
-      // Mettre à jour le compteur
       document.getElementById("counter").innerText = `Scans : ${data.scans}`;
-
-      // Mettre à jour le badge
       const badgeElement = document.getElementById("badge");
+
       if (data.badge !== lastBadge) {
         badgeElement.innerText = data.badge || "⏳ Aucun trophée";
         badgeElement.style.color = "gold";
         badgeElement.style.textShadow = "0 0 20px gold";
-        badgeElement.style.transition = "transform 0.5s ease";
         badgeElement.style.transform = "scale(1.3)";
-        setTimeout(() => {
-          badgeElement.style.transform = "scale(1)";
-        }, 800);
+        setTimeout(() => badgeElement.style.transform = "scale(1)", 800);
         lastBadge = data.badge;
       } else {
         badgeElement.innerText = data.badge || "⏳ Aucun trophée";
@@ -126,12 +128,11 @@ function updateCounter() {
     });
 }
 
-// Rafraîchissement automatique toutes les 10 secondes
+// Rafraîchissement auto toutes les 10 secondes
 setInterval(updateCounter, 10000);
-
-// Chargement initial
 updateCounter();
 </script>
-</body>
 
+</body>
 </html>
+
